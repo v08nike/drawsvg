@@ -1,0 +1,76 @@
+
+<ng-container #generator="appRandomNumber" appRandomNumber
+(numberGenerated)="onNumberGenerated($event)"
+></ng-container>
+
+<mat-card style="width:100%">
+<mat-card-header>
+  <mat-card-title>Random number X</mat-card-title>
+</mat-card-header>
+
+<mat-card-content>
+
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>X</mat-label>
+      <input type="email" matInput  disabled="disabled"
+             value={{generatedNumber}}>
+             </mat-form-field>
+             </form>
+             
+</mat-card-content>
+
+<mat-card-actions>
+  <button mat-flat-button color="primary"
+    (click)="generator.generateNumber()"
+  >
+    GENERATE
+  </button>
+  <br/>
+  <br/>
+  <div *ngIf="state" style="display: flex;">
+    <ng-container *ngFor="let item of entries">
+
+
+      <svg class="chart"  style="display:flex;" width="420" height="150" aria-labelledby="title" role="img"> 
+      
+        <rect
+      *ngIf="item >0"
+        x="5"
+        y="20"
+        width="100"
+        height="50"
+        style="fill :green"
+      />
+      <text x="0" y="16" font-family="Verdana" font-size="20" fill="gray">{{item}}</text>
+
+      
+      <rect
+        *ngIf="item <0"
+        x="5"
+        y="20"
+        width="100"
+        height="50"
+        style="fill: red;"
+      />
+      <text x="0" y="16" font-family="Verdana" font-size="20" fill="gray">{{item}}</text>
+      >
+
+    </svg>
+ 
+
+    </ng-container>
+    
+<!--  
+        
+        <svg class="chart"  style="padding: 10px 6px;" width="420" height="150" aria-labelledby="title" role="img"> 
+          <ng-container *ngFor="let item of entries">
+            <rect [attr.width]="50" height="19" y="50" style="fill:green;"></rect> 
+          </ng-container>
+        </svg>   -->
+   
+  </div>
+</mat-card-actions>
+
+</mat-card>
